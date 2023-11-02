@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import "./WeatherApp.css";
 
@@ -21,17 +21,19 @@ const WeatherApp = () => {
     location: "Jaipur",
   });
 
+  let cites = useRef()
   const search = () => {
-    const city = document.querySelector(".cityInput").value;
+    const city =cites.current.value;
+    
+    
     if (city === "") return;
     const url = `https://api.openweathermap.org/data/2.5/weather?&q=${city}&units=Metric&appid=${Api}`;
-
     axios
       .get(url)
       .then((response) => {
-        const data = response.data;
+        const data = response?.data;
         setWeatherData({
-          temp: Math.floor(data.main.temp),
+          temp: Math.floor(data?.main?.temp),
           humidity: data.main.humidity,
           wind: data.wind.speed,
           location: data.name,
@@ -60,7 +62,7 @@ const WeatherApp = () => {
   return (
     <div className="container">
       <div className="top-bar">
-        <input type="text" className="cityInput" placeholder="Search" />
+        <input type="text" className="cityInput" placeholder="Search" ref={cites}/>
         <div className="search-icon" onClick={search}>
           <img src={Search} alt="search" />
         </div>
@@ -68,7 +70,7 @@ const WeatherApp = () => {
       <div className="weather-image">
         <img src={Wicon} alt="cloud" />
       </div>
-      <div className="weather-temp">{weatherData.temp}'c</div>
+      <div className="weather-temp">{weatherData.temp}&#x2103; </div>
       <div className="weather-location">{weatherData.location}</div>
       <div className="data-container">
         <div className="element">
