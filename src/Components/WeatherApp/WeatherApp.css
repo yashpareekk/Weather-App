@@ -4,8 +4,22 @@
     margin: auto;
     margin-top: 25px;
     border-radius: 12px;
-    background-image: linear-gradient(180deg, #130754 0%, #28149c 100%);
-}
+    background-image: linear-gradient(
+        180deg,
+        hsl(240deg 88% 25%) 0%,
+        hsl(247deg 80% 34%) 20%,
+        hsl(249deg 77% 41%) 29%,
+        hsl(250deg 76% 46%) 36%,
+        hsl(251deg 79% 51%) 43%,
+        hsl(251deg 95% 56%) 50%,
+        hsl(251deg 80% 52%) 57%,
+        hsl(252deg 77% 47%) 64%,
+        hsl(253deg 78% 41%) 71%,
+        hsl(254deg 82% 35%) 80%,
+        hsl(259deg 97% 27%) 100%
+      );
+    
+    }
 .top-bar{
     display: flex;
     justify-content: center;
